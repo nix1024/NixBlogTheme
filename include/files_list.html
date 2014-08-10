@@ -1,0 +1,21 @@
+<div class="image-list">
+{% for file in files %}
+    {% if file.content_type == 'folder' %}
+    	<div class="col-md-6">
+    		<a href="/file/{{file.path}}">
+            <img src='{{ file.url }}?width=428&height=321&fixed=true' title="{{ file.title }}" />
+            {% if file.content_type == 'folder' %}
+            	<span>{{ file.title }} [{{ file.images_count }}]</span>
+            {% endif %}
+        	</a>
+    	</div>
+    {% else %}
+    	<div class="col-md-12">
+    		<img src='{{ file.url }}?width=640' title="{{ file.title }}" />
+    		<span>{{ file.title }}</span>
+    	</div>
+    {% endif %}
+{% endfor %}
+</div>
+
+{% include 'include/paginator.html' %}

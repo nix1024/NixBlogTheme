@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    {% if request.host == 'www.nixwang.com' %}
+        {{ redirect('http://nixwang.com'+request.url_without_host) }}
+    {% endif %}
+    <meta charset="UTF-8">
+    <link rel='alternate' type='application/rss+xml' title='atom 1.0' href='/feed' />
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+    <meta name="keywords" content="{{ site.configs.keywords }}" />
+    <meta name="description" content="{{ site.description }}" />
+    <link rel="shortcut icon" href="/t/favicon.png" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/t/stylesheets/bootstrap.min.css" /> 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/t/stylesheets/font-awesome.min.css?version={{ resource_version }}" media="all">
+
+    <!-- Custom -->
+    <link rel="stylesheet" href="/t/stylesheets/nix1024.css" />
+</head>
+<body>
+    
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container {% if site.configs.hide_sider %} nosider {% endif %} ">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">{{ site.configs.title or site.title}}</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/archive" {% block nav_archive %} {% endblock %}>ARCHIVE</a>
+                    </li>
+                    <li>
+                        <a href="/pages/links"  {% if request.path == '/pages/links' %}class="current"{% endif %}>LINKS</a>
+                    </li>
+                    <li>
+                        {% if site.configs.instagram %}
+                            <a href="http://instagram.com/{{ site.configs.instagram }}">PHOTO</a>
+                        {% else %}
+                            <a href="/folder/photo">PHOTO</a>
+                        {% endif %}                       
+                    </li>
+                    <li>
+                        <a href="/pages/about"  {% if request.path == '/pages/about' %}class="current"{% endif %}>ABOUT</a>
+                    </li>
+                </ul> 
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
+    <div id="main" class="container {% if site.configs.hide_sider %} nosider {% endif %}">
+        <div class="row">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    {% include 'include/footer.html' %}
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</body>
+</html>

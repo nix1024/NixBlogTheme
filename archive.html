@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}{{ site.title }}{% endblock %}
+
+{% block nav_archive %}
+    class="current"
+{% endblock %}
+
+{% block content %}
+    <ul class="archive-list">
+    {% for month, posts in archive %}
+        <li class="list-years">{{ month }}</li>
+        <ul class='listing'>
+        {% for post in posts %}        
+            <li class="listing-item">
+                <span class="date">{{ post.date | date("%Y-%m-%d") }}</span>
+                {% if post.metadata.link %}
+                <a href="{{post.metadata.link}}" title="{{ post.title }}">{{ post.title }}&nbsp;<i class="icon-external-link"></i></a>
+                {% else %}
+                <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
+
+

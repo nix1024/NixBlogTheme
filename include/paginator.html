@@ -1,0 +1,12 @@
+{% if paginator.has_previous or  paginator.has_next %}
+    <div class="pager cf">
+		<ul class="pager">
+        {% if paginator.has_previous %}
+            <li class="next"><a href="{{ paginator.previous_page_url }}">Newer&nbsp;&rarr;</a></li>
+        {% endif %}
+        {% if paginator.has_next %}
+            <li class="previous"><a href="{{ paginator.next_page_url }}">&larr;&nbsp;Older</a></li>
+        {% endif %}
+		</ul>
+    </div>
+{% endif %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{ site.title }}{% endblock %}
+
+{% block nav_index %}
+    class="current"
+{% endblock %}
+
+{% block content %}
+    {% if configs.posts and configs.files %}
+        {% if posts %}
+            <div class="primary">{% include 'include/posts_list.html' %}</div>
+        	{% if not site.configs.hide_sider %} {% include 'include/sider.html' %} {% endif %}               
+        {% elif files %}
+            {% include 'include/files_list.html' %}
+        {% endif %}
+    {% elif configs.posts %}
+        <div class="primary">{% include 'include/posts_list.html' %}</div>
+        {% if not site.configs.hide_sider %} {% include 'include/sider.html' %} {% endif %} 
+    {% elif configs.files %}
+        {% include 'include/files_list.html' %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }} | {{ site.configs.title or site.title }}{% endblock %}
+
+
+<div class="row">
+{% block content %}
+<div class="primary {% if site.configs.hide_sider %} col-md-12 {% else %} col-md-9 {% endif %}">
+    <article class="post">
+        <header>
+            <h2 class="page-header">
+                {{ post.title }}
+            </h2>
+            <div class="entry-meta">
+                <span> <i class="icon-time"></i>
+                    {{ post.date | date('%Y-%m-%d') }}
+                </span>
+                {% if post.tags %}
+                <span> <i class="icon-tags"></i>
+                    {% for tag in post.tags %}
+                    <a class="tag" href="/tags/{{ tag }}">{{ tag }}</a>
+                    {% endfor %}
+                </span>
+                {% endif %}
+                <span class="count">
+                    <i class="icon-book"></i>
+                    {{ post.visits }}
+                </span>
+            </div>
+        </header>
+        <div class="entry">{{ post| auto_content }}</div>
+    </article>
+    <div id="disqus_thread" class="comments"></div>
+
+    {% if site.configs.disqus %}
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    {% elif site.configs.duoshuo %}
+        <!-- Duoshuo Comment BEGIN -->
+        <div class="comment-wrap"><div class="ds-thread"></div></div>            
+        <!-- Duoshuo Comment END -->
+    {% else %}
+    <div class="comment-wrap">{{ get_text_file('comment_js').raw_content }}</div>
+    {% endif %}
+</div>
+ {% if not site.configs.hide_sider %} {% include 'include/sider.html' %} {% endif %} 
+{% endblock %}
+</div>
