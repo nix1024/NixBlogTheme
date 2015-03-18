@@ -62,6 +62,5 @@ domain: http://nixwang.com
     - 去掉了侧边栏，调整了文章页面宽度。添加配置项 hide_sider。
 
 # Feedback
-http://nixwang.com/post/2013-12-01-farbox-theme
-
+http://nixwang.com/2013/farbox-theme/
 https://github.com/nix1024/NixBlogTheme
