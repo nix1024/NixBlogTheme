@@ -13,12 +13,13 @@ domain: http://nixwang.com
 ---
 # site.md配置说明   
     
- weibo: 使用新浪个人工具生成的iframe标签中，截取类似代码即可。注意不能漏了verifier字段。 
- rpost： 有此项配置时侧栏显示最近文章，最大值20。
- duoshuo: 侧栏最新评论使用的多说，字段值为多说的short_name。 
- keywords: meta 的keywords属性。
- analytics ：一段script脚本，可以将脚本压缩成一行，填入site.md。
- 
+weibo: 使用新浪个人工具生成的iframe标签中，截取类似代码即可。注意不能漏了verifier字段。 
+rpost: 有此项配置时侧栏显示最近文章，最大值20。
+duoshuo: 侧栏最新评论使用的多说，字段值为多说的short_name。 
+keywords: meta 的keywords属性。
+analytics: 一段script脚本，可以将脚本压缩成一行，填入site.md。
+instagram: 填入 instagram 账号
+
 # 链接类主题   
 当文章头部有link标签时，文章列表内的标题将直接链到该link  
  
